@@ -1,0 +1,5 @@
+DateTime==4.3
+boto3==1.14.27
+psycopg2-binary==2.8.6
+psycopg2==2.8.6
+pytz==2019.3

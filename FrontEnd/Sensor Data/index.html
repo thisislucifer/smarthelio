@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.2.1/dist/chart.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js" integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,400;0,500;0,700;1,300&display=swap" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <title>Sensor Data</title>
+</head>
+
+<body>
+    <h1>Sensor Data</h1>
+    <div class="card">
+        <div class="cardHeader">
+            <div class="dropdownContainer">
+                <label id="sensorLabel" for="sensorIds">Sensor ID: </label>
+                <select name="sensorIds" id="sensorIds" onchange="selectOnChangeListener()">
+                    <option>Select a sensor ID</option>
+                </select>
+                <i id="loader" style="display: none;" class='bx bx-loader-circle bx-spin loader' ></i>
+            </div>
+            <div id="buttonPanel">
+                <button class="chartButton" onclick="chartButtonListener(0)">1W</button>
+                <button class="chartButton" onclick="chartButtonListener(1)">1M</button>
+                <button class="chartButton" onclick="chartButtonListener(2)">6M</button>
+                <button class="chartButton" onclick="chartButtonListener(3)">1Y</button>
+                <button class="chartButton" onclick="chartButtonListener(4)">5Y</button>
+                <button class="chartButton chartButtonActive" onclick="chartButtonListener(5)">All</button>
+            </div>
+        </div>
+        <div class="cardContainer">
+            <canvas id="myChart"></canvas>
+        </div>
+    </div>
+
+</body>
+<script src="app.js"></script>
+
+</html>

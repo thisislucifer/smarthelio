@@ -1,0 +1,38 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: SmartHelio-dev AWS Cloud Infra Automation -  RDS
+
+# Usage : aws cloudformation create-stack  --stack-name rds-cf --template-body file://RDS/rds.yaml
+
+Resources:
+    DatabaseInstance:
+      Type: AWS::RDS::DBInstance
+      Properties:
+        AutoMinorVersionUpgrade: false
+        BackupRetentionPeriod: 0
+        DBInstanceIdentifier: smarthelio-dev
+        DBName: smarthelio_dev
+        Engine: postgres 
+        EngineVersion: "12.5"
+        MasterUsername: postgres
+        MasterUserPassword: Admin123
+        DBInstanceClass: db.t2.micro
+        AllocatedStorage: '20'
+        StorageType: 'gp2'
+        VPCSecurityGroups:
+          - !GetAtt DBEC2SecurityGroup.GroupId
+    DBEC2SecurityGroup:
+      Type: AWS::EC2::SecurityGroup
+      Properties:
+        GroupDescription: Open database for access
+        SecurityGroupIngress:
+          - IpProtocol: tcp
+            FromPort: '5432'
+            ToPort: '5432'
+            CidrIp: 0.0.0.0/0
+          
+            
+
+Outputs:
+  DatabaseInstance: 
+    Value: {"Fn::GetAtt": ["DatabaseInstance","Endpoint.Address"]}
+    Description: Endpoint of DatabaseInstance

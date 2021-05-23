@@ -7,20 +7,15 @@ from src.utilities.responses.responses import success_response
 
 db_ops = DatabaseEngine()
 session = db_ops.get_db_session()
-# Sensor.check_table()
-
-
-db_obj = DatabaseEngine()
-conn = db_obj.get_db_connection()
-cur = db_obj.get_db_cursor(conn)
-
-
 
 def list_r(event,context):
     try:
-        obj = SensorReadingOps(cur, conn, json.loads(event['body']))
-        sensors = obj.list_s()
-        return success_response("Data retrieved successfully", sensors)
+        obj = SensorReadingOps(session, json.loads(event['body']))
+        sensors = obj.list_sensors_reagings()
+        if sensors:
+            return success_response("Data retrieved successfully", sensors)
+        else:
+            return error_response("Incorrect sensor_id",400)
     except Exception as e:
         print(str(e))
         return error_response("Data not retrieved successfully",500)

@@ -1,0 +1,11 @@
+{
+  "name": "sh-web-app",
+  "description": "",
+  "version": "0.1.0",
+  "dependencies": {
+    "serverless-offline": "^7.0.0"
+  },
+  "devDependencies": {
+    "serverless-python-requirements": "^5.1.1"
+  }
+}

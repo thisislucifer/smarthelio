@@ -173,7 +173,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/sh-web-app/dev/1621769467118-2021-05-23T11:31:07.118Z/sensor.zip"
+          "S3Key": "serverless/sh-web-app/dev/1621786070037-2021-05-23T16:07:50.037Z/sensor.zip"
         },
         "Handler": "src/sensor/list.list_s",
         "Runtime": "python3.6",
@@ -197,7 +197,7 @@
           ]
         },
         "Layers": [
-          "arn:aws:lambda:us-east-1:711380493766:layer:pg_layer:2"
+          "arn:aws:lambda:us-east-2:711380493766:layer:pg_layer:1"
         ]
       },
       "DependsOn": [
@@ -211,7 +211,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/sh-web-app/dev/1621769467118-2021-05-23T11:31:07.118Z/list_readings.zip"
+          "S3Key": "serverless/sh-web-app/dev/1621786070037-2021-05-23T16:07:50.037Z/list_readings.zip"
         },
         "Handler": "src/readings/list.list_r",
         "Runtime": "python3.6",
@@ -235,7 +235,7 @@
           ]
         },
         "Layers": [
-          "arn:aws:lambda:us-east-1:711380493766:layer:pg_layer:2"
+          "arn:aws:lambda:us-east-2:711380493766:layer:pg_layer:1"
         ]
       },
       "DependsOn": [
@@ -249,7 +249,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/sh-web-app/dev/1621769467118-2021-05-23T11:31:07.118Z/auto_populate_db.zip"
+          "S3Key": "serverless/sh-web-app/dev/1621786070037-2021-05-23T16:07:50.037Z/auto_populate_db.zip"
         },
         "Handler": "src/automation_scripts/populate_sensor_data.populate_reading_data",
         "Runtime": "python3.6",
@@ -271,40 +271,43 @@
             "IamRoleLambdaExecution",
             "Arn"
           ]
-        }
+        },
+        "Layers": [
+          "arn:aws:lambda:us-east-2:711380493766:layer:pg_layer:1"
+        ]
       },
       "DependsOn": [
         "AutoUnderscorepopulateUnderscoredbLogGroup"
       ]
     },
-    "SensorLambdaVersiongqZrWJFFfhK2StrOP7q7wOpi7bezy8joPuPksBDQ9A": {
+    "SensorLambdaVersiongTs2U2Wtwa68aOrULzL15Us6NrxtJSYQxqHUwloAQ": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "SensorLambdaFunction"
         },
-        "CodeSha256": "vQZBH5gAj2skdH6NRt5IJtpgW83+xHePZPGITVs16+U="
+        "CodeSha256": "NXhTjJ0Q/KsF9qde0OyTQzjeeqVpnkeKsc+XyIitgOM="
       }
     },
-    "ListUnderscorereadingsLambdaVersion2dq0cm2ZWS2Z8a6Z1coHjt039Bkce7GdTkt6QYAs": {
+    "ListUnderscorereadingsLambdaVersionbFuSx5cCNEhvvxNqh4qunJuJa8swm3Q6hCYnMGeb4M": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "ListUnderscorereadingsLambdaFunction"
         },
-        "CodeSha256": "vQZBH5gAj2skdH6NRt5IJtpgW83+xHePZPGITVs16+U="
+        "CodeSha256": "NXhTjJ0Q/KsF9qde0OyTQzjeeqVpnkeKsc+XyIitgOM="
       }
     },
-    "AutoUnderscorepopulateUnderscoredbLambdaVersionRAvBDbWCycT4104Sa8EO3O97Ol24em0lVpgszunLU": {
+    "AutoUnderscorepopulateUnderscoredbLambdaVersionMuqOlCG9peK22WO25x6I9ru2zjH2UKJGJKlcSsdc4": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "AutoUnderscorepopulateUnderscoredbLambdaFunction"
         },
-        "CodeSha256": "vQZBH5gAj2skdH6NRt5IJtpgW83+xHePZPGITVs16+U="
+        "CodeSha256": "NXhTjJ0Q/KsF9qde0OyTQzjeeqVpnkeKsc+XyIitgOM="
       }
     },
     "HttpApi": {
@@ -565,7 +568,7 @@
     "SensorLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "SensorLambdaVersiongqZrWJFFfhK2StrOP7q7wOpi7bezy8joPuPksBDQ9A"
+        "Ref": "SensorLambdaVersiongTs2U2Wtwa68aOrULzL15Us6NrxtJSYQxqHUwloAQ"
       },
       "Export": {
         "Name": "sls-sh-web-app-dev-SensorLambdaFunctionQualifiedArn"
@@ -574,7 +577,7 @@
     "ListUnderscorereadingsLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "ListUnderscorereadingsLambdaVersion2dq0cm2ZWS2Z8a6Z1coHjt039Bkce7GdTkt6QYAs"
+        "Ref": "ListUnderscorereadingsLambdaVersionbFuSx5cCNEhvvxNqh4qunJuJa8swm3Q6hCYnMGeb4M"
       },
       "Export": {
         "Name": "sls-sh-web-app-dev-ListUnderscorereadingsLambdaFunctionQualifiedArn"
@@ -583,7 +586,7 @@
     "AutoUnderscorepopulateUnderscoredbLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "AutoUnderscorepopulateUnderscoredbLambdaVersionRAvBDbWCycT4104Sa8EO3O97Ol24em0lVpgszunLU"
+        "Ref": "AutoUnderscorepopulateUnderscoredbLambdaVersionMuqOlCG9peK22WO25x6I9ru2zjH2UKJGJKlcSsdc4"
       },
       "Export": {
         "Name": "sls-sh-web-app-dev-AutoUnderscorepopulateUnderscoredbLambdaFunctionQualifiedArn"
